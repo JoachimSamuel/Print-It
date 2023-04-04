@@ -29,11 +29,9 @@ let tagLine = document.querySelector("#banner p");
 
  // ARROW LEFT AND RIGHT
 arrowLeft.addEventListener("click", () => {
-	arrowLeft.style.cursor = "pointer"
 	showPrevSlide()
 })
 arrowRight.addEventListener("click", () => {
-	arrowRight.style.cursor = "pointer"
 	showNextSlide()
 })
 
@@ -62,24 +60,29 @@ const showPrevSlide = () => {
 const updateSlide = () => {
 	imgSlide.src = slide[currentSlideIndex].image;
 	tagLine.innerHTML = slide[currentSlideIndex].tagLine;
+	displayDots(currentSlideIndex)
   };
 
 // Point pour chaque diapositive
-  slide.forEach((slide, index ) => {
-  const dot = document.createElement("div");
-  dot.classList.add("dot");
-  dots.appendChild(dot);
+const displayDots = (activeIndex) => {
+    dots.innerHTML = "";
+    slide.forEach((slide, index) => {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (index === activeIndex) {
+            dot.classList.add("dot_selected");
+        }
+        dots.appendChild(dot);
 
-  // classe active pour le point de la  diapositive
-  if (index === 0) {
-    dot.classList.add("dot_selected");
-  }
+        // écouteur d'événement de clic pour chaque point
+        dot.addEventListener("click", () => {
+            currentSlideIndex = index;
+            updateSlide();
+        });
+    });
+};
 
-});
-
-  
-
-
+displayDots(0)
 // ------------
 
 

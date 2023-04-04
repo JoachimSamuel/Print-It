@@ -125,9 +125,10 @@ header {
 /* Gestion des fleches du carrousel */
 #banner .arrow {
 	position: absolute;
+	cursor: pointer;
 }
 #banner .arrow:hover {
-	opacity: 0.5;
+	opacity: 0.6;
 	transform: scale(1.2);
 }
 #banner .arrow_left {
@@ -152,7 +153,8 @@ header {
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 .dot:hover {
-	transform: scale(1.1);
+	transform: scale(1.2);
+	opacity: 0.6;
 }
 .dot_selected {
 	background-color: #fff;
